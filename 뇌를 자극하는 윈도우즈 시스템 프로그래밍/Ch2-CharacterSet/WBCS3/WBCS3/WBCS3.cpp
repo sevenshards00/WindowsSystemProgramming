@@ -11,11 +11,11 @@
 
 #include <stdio.h>
 
-int main(int argc, char_* argv[])
+int main(int argc, char* argv[])
 {
 	int i;
 	for (i = 0; i < argc; i++)
-		fputws(argv[i], stdout);
+		fputws(argv[i], stdout); // 여기에서 컴파일 에러 발생, 데이터 타입이 일치하지 않음
 
 	return 0;
 }
