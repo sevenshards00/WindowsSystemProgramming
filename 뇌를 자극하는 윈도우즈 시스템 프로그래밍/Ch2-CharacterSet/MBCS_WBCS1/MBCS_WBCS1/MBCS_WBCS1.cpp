@@ -9,8 +9,14 @@
 * 이전 버전 내용:
 */
 
+// warning 메시지가 나온다
+// 기본적으로 .NET 컴파일러에서는 해당 매크로를 기본으로 삽입해주기 때문.
 #define UNICODE
 #define _UNICODE
+
+// MBCS 기반으로 컴파일하겠다면 아래의 지시자로 정의된 매크로를 무효화하면 된다.
+// #undef UNICODE
+// #undef _UNICODE
 
 #include <stdio.h>
 #include <tchar.h>
