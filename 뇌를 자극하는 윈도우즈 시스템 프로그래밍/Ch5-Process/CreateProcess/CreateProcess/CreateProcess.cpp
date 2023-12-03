@@ -18,7 +18,7 @@
 int _tmain(int argc, TCHAR* argv[])
 {
 	STARTUPINFO si = { 0, }; // STARTUPINFO 구조체를 0으로 초기화
-	PROCESS_INFORMATION pi;
+	PROCESS_INFORMATION pi; // PROCESS_INFORMATION 구조체
 	TCHAR npTitle[] = _T("New Process!"); // 새로운 프로세스의 콘솔 윈도우의 타이틀에 사용할 문자열
 	
 	// STARTUPINFO 구조체의 멤버 변수 초기화
@@ -38,31 +38,42 @@ int _tmain(int argc, TCHAR* argv[])
 	*/ 
 	si.lpTitle = npTitle; // 새로운 프로세스의 콘솔 창에서 쓸 타이틀 바 제목
 	
-	TCHAR command[] = _T("AdderProcess.exe 10 20");
-	TCHAR cDir[DIR_LEN];
-	BOOL state;
+	TCHAR command[] = _T("AdderProcess.exe 10 20"); // CreateProcess의 두 번째 인자로 전달할 문자열
+	TCHAR cDir[DIR_LEN]; // 현재 디렉터리 경로를 저장할 배열
+	BOOL state; // 프로세스 생성 성공 여부를 확인하기 위해 사용한 변수
 
 	GetCurrentDirectory(DIR_LEN, cDir); // 현재 디렉터리 확인
 	_fputts(cDir, stdout);
 	_fputts(_T("\n"), stdout);
 
-	SetCurrentDirectory(_T("D:\\WinSystem"));
+	SetCurrentDirectory(_T("D:\\WinSystem")); // 현재 디렉터리를 지정하는 함수.
 
 	GetCurrentDirectory(DIR_LEN, cDir); // 현재 디렉터리 확인
 	_fputts(cDir, stdout);
 	_fputts(_T("\n"), stdout);
 
 	state = CreateProcess(
-		NULL,
-		command,
+		// 첫 번째 인자를 NULL로 전달하면 두 번째 인자를 통해서 생성하려는 프로세스의 이름 정보까지 함께 전달 가능
+		// 첫 번째 인자로 실행파일의 이름을 전달하는 경우에는 '현재 디렉터리'를 기준으로 실행파일을 찾음
+		NULL, 
+		// 두 번째 인자로 실행파일의 이름을 전달하는 경우에는 '표준 검색경로' 순서대로 실행파일을 찾아서 프로세스를 생성
+		// 추가로 유니코드 버전에서는 _T("AdderProcess.exe 10 20");를 바로 넣으면 런타임 오류가 난다.
+		// CreateProcess 함수는 내부적으로 문자열에 변경을 가하기 때문.
+		// 함수 호출이 끝날 때는 변경된 문자열을 다시 원래 상태로 돌려놓기 때문에 변경이 되는 것을 인지하기 어려움
+		// 그래서 전달인자의 문자열은 반드시 '변수'형태로 전달할 것.
+		command, 
 		NULL, NULL, TRUE,
+		// 특성을 결정하는 인자로, 새로운 콘솔창을 띄울 때 쓰는 전달 인자.
+		// 만약 0을 전달한다면 부모 프로세스의 콘솔 윈도우를 자식 프로세스가 공유한다.
 		CREATE_NEW_CONSOLE,
-		NULL, NULL, &si, &pi
+		// STARTUPINFO 구조체와 PROCESS_INFORMATION 구조체를 인자로 전달.
+		// PROCESS_INFORMAION구조체는 새로 생성되는 프로세스 관련 정보를 얻기 위해 사용.
+		NULL, NULL, &si, &pi 
 	);
 
-	if (state != 0)
+	if (state != 0) // 프로세스 생성이 성공했다면
 		_fputts(_T("Creation Success! \n"), stdout);
-	else
+	else // 실패했다면
 		_fputts(_T("Creation Error! \n"), stdout);
 
 	return 0;
