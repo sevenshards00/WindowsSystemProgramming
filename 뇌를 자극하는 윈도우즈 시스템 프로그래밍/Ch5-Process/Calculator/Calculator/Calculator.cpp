@@ -68,7 +68,7 @@ int _tmain(int argc, TCHAR* argv[])
 			Min(num1, num2);
 			break;
 		case ELSE:
-			ZeroMemory(&pi, sizeof(pi)); // 구조체 포인터 변수를 0으로 초기화하는데 사용하는 함수.
+			ZeroMemory(&pi, sizeof(pi)); // 구조체 변수를 0으로 초기화하는데 사용하는 함수.
 			CreateProcess(
 				NULL, command, NULL, NULL,
 				TRUE, 0, NULL, NULL, &si, &pi);
