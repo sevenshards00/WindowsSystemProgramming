@@ -50,7 +50,7 @@ int main(int argc, TCHAR* argv[])
 
 	// CloseHandle(pi.hProcess);
 	// 커널 오브젝트의 Usage Count를 1 감소시키는 기능.
-	// 실제로 프로세스가 소멸되는 것은 커널 오브젝트의 Usage Count가 0이 되었을 때.
+	// 실제로 프로세스의 커널 오브젝트가 소멸되는 것은 커널 오브젝트의 Usage Count가 0이 되었을 때.
 	// 그리고 프로세스의 경우에는 프로세스가 종료되는 시점에서 Usage Count가 1 감소한다.
 
 
