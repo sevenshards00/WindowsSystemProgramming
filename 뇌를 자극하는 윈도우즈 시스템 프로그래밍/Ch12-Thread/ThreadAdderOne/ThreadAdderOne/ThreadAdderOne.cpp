@@ -1,6 +1,6 @@
 /*
 * Windows System Programming - 쓰레드의 생성과 소멸
-* 파일명: CountThread.cpp
+* 파일명: ThreadAdderOne.cpp
 * 파일 버전: 0.1
 * 작성자: Sevenshards
 * 작성 일자: 2023-12-07
