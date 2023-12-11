@@ -5,7 +5,7 @@
 * 작성자: Sevenshards
 * 작성 일자: 2023-12-11
 * 이전 버전 작성 일자:
-* 버전 내용: 예외 필터 EXCEPTION_EXECUTE_HANDLER 활용 예제
+* 버전 내용: 예외 필터 EXCEPTION_CONTINUE_EXECUTION 활용 예제
 * 이전 버전 내용:
 */
 
