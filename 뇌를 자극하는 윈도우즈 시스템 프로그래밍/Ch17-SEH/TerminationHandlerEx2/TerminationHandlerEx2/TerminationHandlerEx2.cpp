@@ -14,16 +14,6 @@
 #include <Windows.h>
 #include <process.h>
 
-#include <stdio.h>
-#include <tchar.h>
-#include <Windows.h>
-#include <process.h>
-
-#include <stdio.h>
-#include <tchar.h>
-#include <Windows.h>
-#include <process.h>
-
 #define NUM_OF_GATE 7
 
 // 전역 변수로 사용. -> 쓰레드는 공유 가능
