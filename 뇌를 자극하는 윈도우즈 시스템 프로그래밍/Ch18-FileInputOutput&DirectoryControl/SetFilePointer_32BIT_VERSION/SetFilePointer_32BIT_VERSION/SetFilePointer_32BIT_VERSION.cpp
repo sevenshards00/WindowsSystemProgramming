@@ -5,7 +5,7 @@
 * 작성자: Sevenshards
 * 작성 일자: 2023-12-12
 * 이전 버전 작성 일자:
-* 버전 내용: 파일의 크기 정보를 확인하는 예제
+* 버전 내용: 파일 포인터의 이동 - 32비트 기반
 * 이전 버전 내용:
 */
 
@@ -57,6 +57,8 @@ int _tmain(int argc, TCHAR* argv[])
 
 	ReadFile(hFile, readBuf, sizeof(readBuf), &numOfByteWritten, NULL);
 	_tprintf(TEXT("%s\n"), readBuf);
+
+	CloseHandle(hFile);
 
 	return 0;
 }
