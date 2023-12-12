@@ -40,6 +40,10 @@ int _tmain(int argc, TCHAR* argv[])
 	_tprintf(TEXT("%s\n"), readBuf);
 
 	// 파일 포인터를 맨 앞으로 이동
+	// 64비트 기준 추가 내용
+	// SetFilePointer의 함수 호출 성공 시 파일 포인터의 하위 4바이트 정보는 반환값으로
+	// 상위 4바이트 정보는 세 번째 전달 인자가 가리키는 변수를 통해서 반환하게 된다
+	// 실제로 이 부분이 쓰일지는 모르겠으나, 텍스트 데이터로 4기가가 넘어가는 경우를 다룰 일이 있을까는 의문이다.
 	dwPtrLow = SetFilePointer(hFile, lDistanceLow, &lDistanceHigh, FILE_BEGIN);
 	if (dwPtrLow == INVALID_SET_FILE_POINTER && (GetLastError() != NO_ERROR))
 	{
