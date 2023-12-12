@@ -1,5 +1,5 @@
 /*
-* Windows System Programming - 구조적 예외처리(Structured Exception Handling, SEH)
+* Windows System Programming - 파일 I/O와 디렉터리 컨트롤
 * 파일명: UNICODE_BASE_FILE_IO.cpp
 * 파일 버전: 0.1
 * 작성자: Sevenshards
@@ -20,10 +20,10 @@ int _tmain(int argc, TCHAR* argv[])
 
 	HANDLE hFile = CreateFile(
 		fileName, // 개방(Open)할 파일 이름을 지정
-		GENERIC_WRITE, // 읽기/쓰기 모드를 지정. 여기서는 읽기 모드. or(|) 연산으로 결합 가능
+		GENERIC_WRITE, // 읽기/쓰기 모드를 지정. 여기서는 쓰기 모드. or(|) 연산으로 결합 가능
 		FILE_SHARE_WRITE, // 파일의 공유 모드를 지정
 		0, // 보안(상속) 속성 지정
-		CREATE_ALWAYS, // 파일이 생성되는 방식
+		CREATE_ALWAYS, // 파일이 생성 또는 읽을 때 사용하는 인자
 		FILE_ATTRIBUTE_NORMAL, // 파일의 특성 정보 지정. 일반 파일이라면 FILE_ATTRIBUTE_NORMAL을 통상적으로 사용
 		0 // 기존에 존재하는 파일과 동일한 특성을 가지는 새 파일을 만들 때 사용하는 인자. 일반적으로 NULL 전달.
 	);
