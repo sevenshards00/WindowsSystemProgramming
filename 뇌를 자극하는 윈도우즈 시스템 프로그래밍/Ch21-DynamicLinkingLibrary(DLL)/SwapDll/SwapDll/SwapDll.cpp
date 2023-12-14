@@ -10,7 +10,7 @@
 */
 #include "pch.h"
 
-__declspec(dllexport)
+extern "C" __declspec(dllexport)
 void swap(int* v1, int* v2)
 {
 	int temp = *v1;

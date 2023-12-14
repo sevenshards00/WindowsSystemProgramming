@@ -9,5 +9,5 @@
 * 이전 버전 내용:
 */
 
-__declspec(dllimport)
+extern "C" __declspec(dllimport)
 void swap(int* v1, int* v2);
