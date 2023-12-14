@@ -1,5 +1,5 @@
 ﻿/*
-* Windows System Programming - 비동기 I/O와 APC
+* Windows System Programming - 메모리 관리(Virtual Memory, Heap, MMF)
 * 파일명: SYSTEM_INFO.cpp
 * 파일 버전: 0.1
 * 작성자: Sevenshards
