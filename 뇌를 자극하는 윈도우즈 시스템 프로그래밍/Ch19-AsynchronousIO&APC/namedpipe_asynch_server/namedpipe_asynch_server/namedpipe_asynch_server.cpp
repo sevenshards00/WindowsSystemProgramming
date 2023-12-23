@@ -1,12 +1,12 @@
 ﻿/*
 * Windows System Programming - 비동기 I/O와 APC
 * 파일명: namedpipe_asynch_server.cpp
-* 파일 버전: 0.1
+* 파일 버전: 0.11
 * 작성자: Sevenshards
-* 작성 일자: 2023-12-14
-* 이전 버전 작성 일자:
-* 버전 내용: 중첩 I/O 기반 이름 있는 파이프 - 서버
-* 이전 버전 내용:
+* 작성 일자: 2023-12-23
+* 이전 버전 작성 일자: 2023-12-14
+* 버전 내용: 잘못된 부분의 코드 수정
+* 이전 버전 내용: 중첩 I/O 기반 이름 있는 파이프 - 서버
 */
 
 #define BUF_SIZE 1024
@@ -119,9 +119,10 @@ int CommToClient(HANDLE hPipe)
 		isSuccess =	WriteFile(
 			hPipe, // 파이프 핸들
 			dataBuf, // 전송할 데이터 버퍼
-			bytesRead, // 전송할 데이터 크기
+			bytesWrite, // 전송할 데이터 크기
 			&bytesWritten, // 실제 전송된 데이터 크기
-			NULL);
+			&overlappedInst // OVERLAPPED 구조체 변수의 주소
+		);
 		if (!isSuccess && GetLastError() != ERROR_IO_PENDING)
 		{
 			_tprintf(TEXT("Pipe write message error!\n"));
