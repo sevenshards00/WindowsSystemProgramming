@@ -20,5 +20,5 @@ int _tmain(int argc, TCHAR *argv[])
 
 	// 디스어셈블리를 통해서 확인할 수 있음.
 	// vs2022 기준 C/C++ 컴파일러에서는 디버그 모드에서 0xfd가 아니라 0xfe로 채워진다.
-	errno_t result = _tcscpy_s(szBuffer, _countof(szBuffer), TEXT("0123456789"));
+	errno_t result = _tcscpy_s(szBuffer, _countof(szBuffer), TEXT("0123456"));
 }
